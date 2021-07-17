@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
+import Avatar from "./assets/avatar.png";
 import "./App.css";
 
 function App() {
@@ -7,13 +8,13 @@ function App() {
 
   function handleCount() {
     let data = count;
-    setCount(data);
+    setCount(++data);
   }
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+        <img src={Avatar} alt="logo" />
         <p>Hello Vite + React!</p>
         <p>
           <button type="button" onClick={() => handleCount()}>
