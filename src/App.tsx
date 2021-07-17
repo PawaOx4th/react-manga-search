@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "./logo.svg";
-import Avatar from "./assets/avatar.png";
+import Avatar from "./assets/images/avatar.png";
+import ButtonCustom from "./components/Button/Button";
 import "./App.css";
 
 function App() {
@@ -15,34 +16,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={Avatar} alt="logo" />
-        <p>Hello Vite + React!</p>
-        <p>
-          <button type="button" onClick={() => handleCount()}>
-            count is: {count}
-          </button>
-        </p>
-        <p>
-          Edit <code>App.tsx</code> and save to test HMR updates.
-        </p>
-        <p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-          {" | "}
-          <a
-            className="App-link"
-            href="https://vitejs.dev/guide/features.html"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Vite Docs
-          </a>
-        </p>
+        <ButtonCustom />
       </header>
     </div>
   );
