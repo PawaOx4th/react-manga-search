@@ -17,7 +17,7 @@ function ButtonCustom(props: Props) {
 
   return (
     <button
-      className="text-white bg-green-500 px-5 py-2 rounded-lg cursor-pointer transition-all hover:bg-green-300"
+      className="text-white bg-scales-dark  px-5 py-2 rounded-lg cursor-pointer transition-all hover:bg-green-300"
       onClick={() => handleClick()}
     >
       Click

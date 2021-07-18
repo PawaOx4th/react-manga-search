@@ -9,6 +9,7 @@ import { useFetch } from "./hook/useFetch";
 import axios from "axios";
 import Avatar from "./assets/images/avatar.png";
 import ButtonCustom from "./components/Button/Button";
+import TitleComponent from "./components/Title/Title";
 import "./App.css";
 
 function App() {
@@ -17,7 +18,7 @@ function App() {
 
   const { data, error, isLoad } = useFetch(
     { method: "GET" },
-    `https://jsonplaceholder.typicode.com/todos/${count}`
+    `https://jsonplaceholder.typicode.com/todos/1`
   );
 
   const handleCount = () => {
@@ -29,13 +30,15 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={Avatar} alt="logo" />
+        <img src={Avatar} alt="logo" className="h-profile-md" />
       </header>
       <strong>{count}</strong>
       <ButtonCustom count={count} setCount={setCount} />
-      {isLoad ? "⛔" : "✅"}
+      {isLoad ?? "✅"}
 
       {data ? <span>{JSON.stringify(data)}</span> : ""}
+
+      <TitleComponent>AAA</TitleComponent>
     </div>
   );
 }
