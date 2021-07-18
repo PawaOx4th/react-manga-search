@@ -10,10 +10,12 @@ import axios from "axios";
 import Avatar from "./assets/images/avatar.png";
 import ButtonCustom from "./components/Button/Button";
 import TitleComponent from "./components/Title/Title";
+import Loadding from "@/components/Loadding/Loadding";
 import "./App.css";
 
 function App() {
   const [count, setCount] = useState(1);
+  const [isOpenLoadder, setisOpenLoadder] = useState(false);
   const [item, setItem] = useState<string[]>();
 
   const { data, error, isLoad } = useFetch(
@@ -29,9 +31,15 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={Avatar} alt="logo" className="h-profile-md" />
-      </header>
+      {isOpenLoadder && <Loadding />}
+      <img
+        src={Avatar}
+        alt="logo"
+        className="h-profile-md"
+        onClick={() => {
+          setisOpenLoadder(!isOpenLoadder);
+        }}
+      />
       <strong>{count}</strong>
       <ButtonCustom count={count} setCount={setCount} />
       {isLoad ?? "✅"}

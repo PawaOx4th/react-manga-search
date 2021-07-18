@@ -2,6 +2,8 @@ import React, { ReactNode } from "react";
 import { useFetch } from "@/hook/useFetch";
 import { MangaAPIResponseType, MangaType } from "@/types/mangaType";
 
+import ClipLoader from "react-spinners/ClipLoader";
+
 interface Props {
   children: ReactNode;
 }
