@@ -12,14 +12,13 @@ import ButtonCustom from "./components/Button/Button";
 import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
   const [item, setItem] = useState<string[]>();
-  // const count = useRef(0);
 
-  const { data, error } = useFetch({
-    url: "https://jsonplaceholder.typicode.com/todos/1",
-    method: "GET",
-  });
+  const { data, error, isLoad } = useFetch(
+    { method: "GET" },
+    `https://jsonplaceholder.typicode.com/todos/${count}`
+  );
 
   const handleCount = () => {
     // count.current += 1;
@@ -31,10 +30,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={Avatar} alt="logo" />
-        <strong>{count}</strong>
-        <ButtonCustom count={count} setCount={setCount} />
-        <button onClick={() => handleCount()}>increment</button>
       </header>
+      <strong>{count}</strong>
+      <ButtonCustom count={count} setCount={setCount} />
+      {isLoad ? "⛔" : "✅"}
 
       {data ? <span>{JSON.stringify(data)}</span> : ""}
     </div>
