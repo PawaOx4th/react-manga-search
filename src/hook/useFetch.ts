@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
  * @returns {error} error : Error message
  */
 function useFetch<T>(config: AxiosRequestConfig, url: string) {
-  const [data, setData] = useState<T[]>();
+  const [data, setData] = useState<T>();
   const [isLoad, setIsLoad] = useState(false);
   const [error, setError] = useState<string | null>();
 
@@ -16,7 +16,7 @@ function useFetch<T>(config: AxiosRequestConfig, url: string) {
     await axios({ ...config, url })
       .then((response) => {
         if (response.data) {
-          setData(response.data as T[]);
+          setData(response.data as T);
         }
       })
       .catch((err) => setError(err))
