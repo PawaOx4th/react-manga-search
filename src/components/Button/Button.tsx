@@ -1,10 +1,28 @@
 import React from "react";
 
-function ButtonCustom() {
+interface Props {
+  count: number;
+  setCount: Function;
+}
+
+function ButtonCustom(props: Props) {
+  const { count, setCount } = props;
+
+  const handleClick = () => {
+    console.log("🥑");
+
+    let data = count;
+    setCount(++data);
+  };
+
   return (
-    <div className="text-white bg-green-500 px-5 py-2 rounded-lg cursor-pointer transition-all hover:bg-green-300">
+    <button
+      className="text-white bg-green-500 px-5 py-2 rounded-lg cursor-pointer transition-all hover:bg-green-300"
+      onClick={() => handleClick()}
+    >
       Click
-    </div>
+      <strong> {count}</strong>
+    </button>
   );
 }
 
