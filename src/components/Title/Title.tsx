@@ -1,28 +1,27 @@
-import React, { ReactNode } from "react";
-import { useFetch } from "@/hook/useFetch";
-import { MangaAPIResponseType, MangaType } from "@/types/mangaType";
-
-import ClipLoader from "react-spinners/ClipLoader";
+import { SampleContext } from "@/App";
+import React, { ReactNode, useContext } from "react";
 
 interface Props {
-  children: ReactNode;
+  children?: ReactNode;
 }
 
 export default function Title(props: Props) {
   const { children } = props;
-
-  const { data, error, isLoad } = useFetch<MangaAPIResponseType>(
-    { method: "GET" },
-    "https://api.jikan.moe/v3/search/manga?q=Fate/Zero"
-  );
+  const sampleContext = useContext(SampleContext);
 
   return (
-    <div>
-      <code>
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quasi
-        exercitationem in inventore odio ea vel soluta possimus ab nostrum.
-        Dolorum.
-      </code>
+    <div className=" text-scales-seccandary font-semibold text-4xl">
+      Title
+      <h2>{sampleContext?.count}</h2>
+      <button
+        className="px-4 py-2 bg-scales-seccandary"
+        onClick={() => {
+          sampleContext?.increment(sampleContext.count + 1);
+        }}
+      >
+        🫖
+      </button>
+      <hr />
     </div>
   );
 }

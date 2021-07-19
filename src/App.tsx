@@ -1,52 +1,30 @@
-import React, {
-  useState,
-  useEffect,
-  useMemo,
-  useRef,
-  useCallback,
-} from "react";
-import { useFetch } from "./hook/useFetch";
-import axios from "axios";
-import Avatar from "./assets/images/avatar.png";
-import ButtonCustom from "./components/Button/Button";
-import TitleComponent from "./components/Title/Title";
-import Loadding from "@/components/Loadding/Loadding";
+import React, { useState } from "react";
 import "./App.css";
+import Avatar from "./assets/images/avatar.png";
+import ContentComponent from "./components/Content/Content";
+import TitleComponent from "./components/Title/Title";
+
+interface SampleContextInterface {
+  count: number;
+  increment: Function;
+}
+
+export const SampleContext = React.createContext<SampleContextInterface | null>(
+  null
+);
 
 function App() {
-  const [count, setCount] = useState(1);
-  const [isOpenLoadder, setisOpenLoadder] = useState(false);
-  const [item, setItem] = useState<string[]>();
-
-  const { data, error, isLoad } = useFetch(
-    { method: "GET" },
-    `https://jsonplaceholder.typicode.com/todos/1`
-  );
-
-  const handleCount = () => {
-    // count.current += 1;
-    let data = count;
-    setCount(++data);
-  };
+  const [state, setState] = useState(0);
 
   return (
     <div className="App">
-      {isOpenLoadder && <Loadding />}
-      <img
-        src={Avatar}
-        alt="logo"
-        className="h-profile-md"
-        onClick={() => {
-          setisOpenLoadder(!isOpenLoadder);
-        }}
-      />
-      <strong>{count}</strong>
-      <ButtonCustom count={count} setCount={setCount} />
-      {isLoad ?? "✅"}
-
-      {data ? <span>{JSON.stringify(data)}</span> : ""}
-
-      <TitleComponent>AAA</TitleComponent>
+      <SampleContext.Provider value={{ count: state, increment: setState }}>
+        <div className="w-8/12 my-0 mx-auto ">
+          <img src={Avatar} alt="logo" className="h-profile-md" />
+          <TitleComponent />
+          <ContentComponent></ContentComponent>
+        </div>
+      </SampleContext.Provider>
     </div>
   );
 }
