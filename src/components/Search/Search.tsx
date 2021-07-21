@@ -3,7 +3,7 @@ import IconFind from "@/assets/images/icons/maximize-outline.svg";
 
 export default function InputComponent() {
   return (
-    <div className="relative flex justify-start items-center min-w-full h-7 bg-white px-2 py-6 rounded-3xl">
+    <div className="relative  flex justify-start items-center min-w-full h-7 bg-white px-2 py-6 rounded-3xl">
       <svg
         className="fill-current text-gray-400 w-7 h-7"
         xmlns="http://www.w3.org/2000/svg"
@@ -21,7 +21,7 @@ export default function InputComponent() {
       <input
         type="text"
         placeholder="Seach..."
-        className="text-gray-800 outline-none pl-3"
+        className="text-gray-800 outline-none pl-3 text-xl"
       />
     </div>
   );
