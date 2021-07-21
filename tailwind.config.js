@@ -2,9 +2,6 @@ module.exports = {
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    height: {
-      "profile-md": "40vmin",
-    },
     // colors: {
     //   scales: {
     //     dark: "#7339AB",
@@ -22,10 +19,21 @@ module.exports = {
           success: "#88F4FF",
         },
       },
+      height: {
+        "profile-md": "40vmin",
+      },
+      flex: {
+        2: "2 2 0%",
+        3: "3 3 0%",
+        4: "4 4 0%",
+      },
     },
   },
   variants: {
-    extend: {},
+    extend: {
+      height: ["hover", "focus"],
+      cursor: ["hover", "focus"],
+    },
   },
   plugins: [],
 };
