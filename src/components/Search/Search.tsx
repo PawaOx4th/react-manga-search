@@ -21,7 +21,7 @@ export default function InputComponent() {
       <input
         type="text"
         placeholder="Seach..."
-        className="text-gray-800 outline-none pl-3 text-xl"
+        className="text-gray-800 outline-none pl-3 text-xl w-full pr-7"
       />
     </div>
   );

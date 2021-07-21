@@ -22,11 +22,17 @@ module.exports = {
       height: {
         "profile-md": "40vmin",
       },
+      flex: {
+        2: "2 2 0%",
+        3: "3 3 0%",
+        4: "4 4 0%",
+      },
     },
   },
   variants: {
     extend: {
       height: ["hover", "focus"],
+      cursor: ["hover", "focus"],
     },
   },
   plugins: [],
