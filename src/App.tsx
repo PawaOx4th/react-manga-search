@@ -10,12 +10,12 @@ import { MangaAPIResponseType } from "./types/mangaType";
 const url = "https://jsonplaceholder.typicode.com/posts";
 
 function App() {
-  const [keyword, setKeyword] = useState("");
+  const [keyword, setKeyword] = useState("Doremon");
   const num = 12;
 
   const { data, error, isLoad } = useFetch<MangaAPIResponseType>(
     { method: "GET" },
-    "https://api.jikan.moe/v3/search/manga?q=Fate/Zero"
+    `https://api.jikan.moe/v3/search/manga?q=${keyword}`
   );
 
   return (
