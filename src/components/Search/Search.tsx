@@ -1,7 +1,14 @@
-import React from "react";
-import IconFind from "@/assets/images/icons/maximize-outline.svg";
+import { SearchKeywordContext } from "@/context";
+import React, { useContext, useEffect, useState } from "react";
 
 export default function InputComponent() {
+  const { keyword, serch } = useContext(SearchKeywordContext);
+  const [text, setText] = useState("xx");
+
+  useEffect(() => {
+    setText(keyword);
+  }, [keyword]);
+
   return (
     <div className="relative  flex justify-start items-center min-w-full h-7 bg-white px-2 py-6 rounded-3xl">
       <svg
@@ -10,10 +17,11 @@ export default function InputComponent() {
         viewBox="0 0 24 24"
       >
         <g data-name="Layer 2">
-          <g data-name="maximize">
+          <g data-name="link">
             <rect width="24" height="24" opacity="0" />
-            <path d="M20.71 19.29l-3.4-3.39A7.92 7.92 0 0 0 19 11a8 8 0 1 0-8 8 7.92 7.92 0 0 0 4.9-1.69l3.39 3.4a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zM5 11a6 6 0 1 1 6 6 6 6 0 0 1-6-6z" />
-            <path d="M13 10h-1V9a1 1 0 0 0-2 0v1H9a1 1 0 0 0 0 2h1v1a1 1 0 0 0 2 0v-1h1a1 1 0 0 0 0-2z" />
+            <path d="M8 12a1 1 0 0 0 1 1h6a1 1 0 0 0 0-2H9a1 1 0 0 0-1 1z" />
+            <path d="M9 16H7.21A4.13 4.13 0 0 1 3 12.37 4 4 0 0 1 7 8h2a1 1 0 0 0 0-2H7.21a6.15 6.15 0 0 0-6.16 5.21A6 6 0 0 0 7 18h2a1 1 0 0 0 0-2z" />
+            <path d="M23 11.24A6.16 6.16 0 0 0 16.76 6h-1.51C14.44 6 14 6.45 14 7a1 1 0 0 0 1 1h1.79A4.13 4.13 0 0 1 21 11.63 4 4 0 0 1 17 16h-2a1 1 0 0 0 0 2h2a6 6 0 0 0 6-6.76z" />
           </g>
         </g>
       </svg>
@@ -22,6 +30,12 @@ export default function InputComponent() {
         type="text"
         placeholder="Seach..."
         className="text-gray-800 outline-none pl-3 text-xl w-full pr-7"
+        value={text}
+        onChange={(e) => {
+          setText(e.target.value);
+
+          if (e.target.value.length >= 3) serch(e.target.value);
+        }}
       />
     </div>
   );

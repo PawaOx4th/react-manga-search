@@ -23,6 +23,7 @@ export default function CardComponent(props: Props) {
     >
       <div className=" h-5/6 w-full ">
         <img
+          loading="lazy"
           src={data?.image_url || SampleImg}
           className="object-cover w-full h-full"
         />
